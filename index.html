@@ -7,6 +7,8 @@
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
 
   <style>
     :root{
@@ -26,6 +28,29 @@
       color: #222;
     }
 
+a:hover {
+      color: var(--devon-green) !important;
+}
+
+/* Global styles */
+
+.btn {background-color: var(--gold);
+border-color: var(--dark);
+color: var(--dark);}
+
+.btn:hover {background-color: var(--dark);
+border-color: var(--jamaica-green);
+color: var(--gold);}
+
+/* Active, focus, and show (dropdown) states */
+.btn:active {
+  background-color: var(--devon-green) !important;
+  border-color: var(--jamaica-green) !important;
+  color: var(--light) !important;
+  box-shadow: 0 0 0 0.1rem rgba(0, 155, 58, 0.3); /* soft green glow */
+  transform: scale(0.97); /* scale effect */
+}
+
     /* NAV */
     .navbar {
       background: linear-gradient(90deg, var(--devon-green), var(--jamaica-green));
@@ -34,6 +59,37 @@
     .navbar .nav-link { color: var(--light) !important; }
     .navbar .navbar-brand { font-weight:700; color: var(--light) !important; }
 
+/* media query for nav */
+    @media (max-width: 991.98px) {
+  .navbar .nav-link {
+    padding: 0.75rem 1rem;
+  }
+}
+    /* NAV Hover */ 
+    .navbar .nav-link:hover { color: var(--gold) !important; background-color: var(--dark);}
+
+        .navbar .nav-link:active, .navbar .nav-link:active {
+  background-color: var(--devon-green) !important;
+  border-color: var(--jamaica-green) !important;
+  color: var(--light) !important;
+  box-shadow: 0 0 0 0.1rem rgba(0, 155, 58, 0.3); /* soft green glow */
+  transform: scale(0.97); /* scale effect */
+}
+
+
+/* Mobile hover (below lg breakpoint = 992px) */
+@media (max-width: 991.98px) {
+  .navbar .nav-link:hover {
+    background-color: var(--dark);
+    color: var(--gold) !important;
+  }
+}
+
+/* burger menu hover */
+
+.navbar-toggler:hover {
+  border-color: var(--gold);}
+    
     /* HERO */
     .hero {
       background: linear-gradient(180deg, var(--jamaica-green) 0%, #006f32 100%);
@@ -48,6 +104,53 @@
     section { padding: 4.5rem 0; }
     .section-title { margin-bottom: 1.25rem; font-weight:700; }
 
+    /* Section background colours */
+/* Section backgrounds */
+.section-light {
+  background-color: var(--light) !important;
+  color: var(--dark) !important;
+}
+
+.section-dark {
+  background-color: #f8f9fa !important; /* light grey */
+  color: var(--dark) !important;
+}
+
+.section-jamaica {
+  background-color: var(--jamaica-green) !important;
+  color: var(--light) !important;
+}
+
+.section-devon {
+  background-color: var(--devon-green) !important;
+  color: var(--light) !important;
+}
+
+/* Section link styles */
+.section-jamaica a:hover,
+.section-devon a:hover,
+.section-jamaica a:focus,
+.section-devon a:focus {
+  color: var(--light) !important;
+  text-decoration: none;
+}
+
+/* Make paragraphs and headings inherit the section color */
+ .section-jamaica p, .section-jamaica a,  .section-jamaica .btn,
+.section-jamaica h1, .section-jamaica h2, .section-jamaica h3, .section-jamaica h4, .section-jamaica h5, .section-jamaica h6 {
+  color: var(--dark) !important;
+}
+
+/* Exclude links inside buttons or nav buttons */
+a:hover:not(.btn):not(.btn *) {
+  color: var(--devon-green) !important;
+}
+
+/* .section-devon p,
+.section-devon h1, .section-devon h2, .section-devon h3, .section-devon h4, .section-devon h5, .section-devon h6 {
+  color: var(--light) !important;
+} */
+
     /* CARDS */
     .info-card { border-radius: .5rem; border: 1px solid #e9ecef; background:#fff; padding:1.25rem; min-height:130px; }
 
@@ -59,7 +162,17 @@
       border-radius: .5rem;
       transition: transform .08s ease;
     }
-    .btn-cta:hover { transform: translateY(-2px); }
+    .btn-cta:hover { transform: translateY(-2px); background-color: var(--dark); color: var(--gold); }
+
+        /* CTA button 2 */
+    .btn-cta-2 {
+      background: var(--dark);
+      color: var(--gold);
+      font-weight: 700;
+      border-radius: .5rem;
+      transition: transform .08s ease;
+    }
+    .btn-cta-2:hover { transform: translateY(-2px); background-color: var(--gold); color: var(--dark); border-color: var(--dark);}
 
     /* FOOTER */
     footer { background: #0b0b0b; color: #fff; padding: 2.5rem 0; }
@@ -68,9 +181,20 @@
     @media (max-width: 576px){
       .hero { padding: 3rem 1rem; }
     }
+
+    a:focus,
+.nav-link:focus,
+.btn:focus,
+.btn-cta-icon:focus {
+  outline: 3px solid var(--gold); /* clear focus ring */
+  outline-offset: 3px;
+  background-color: var(--dark) !important;
+    color: var(--light) !important;
+}
   </style>
+
 </head>
-<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="80" tabindex="0">
+<body tabindex="0">
 
   <!-- NAVBAR -->
   <nav id="mainNav" class="navbar navbar-expand-lg sticky-top">
@@ -89,7 +213,7 @@
           <li class="nav-item"><a class="nav-link" href="#support">Get Involved</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
           <li class="nav-item d-none d-lg-block">
-            <a class="btn btn-cta ms-3" href="#fundraise">Donate</a>
+            <a class="btn ms-3" href="#fundraise">Donate</a>
           </li>
         </ul>
       </div>
@@ -102,12 +226,12 @@
       <div class="row justify-content-center">
         <div class="col-11 col-md-9 col-lg-8">
           <h1>Devon Loves Jamaica</h1>
-          <p class="lead">Supporting communities affected by Hurricane Melissa. Join us for fundraising, events, and solidarity.</p>
+          <p class="lead">Supporting communities affected by Hurricane Melissa.<br>Join us for fundraising, events, and solidarity.</p>
           <div class="mt-4 d-flex justify-content-center gap-2 flex-wrap">
             <a class="btn btn-cta btn-lg" href="#fundraise" role="button">Donate Now</a>
-            <a class="btn btn-outline-light btn-lg" href="#support" role="button">Get Involved</a>
+            <a class="btn btn-cta-2 btn-lg" href="#support" role="button">Get Involved</a>
           </div>
-          <p class="mt-3 small" style="opacity:.9">All funds will be routed through trusted partners — transparency guaranteed.</p>
+          <p class="mt-3 small" style="opacity:.9">All funds will be distributed by committee through trusted local and national organisations.</p>
         </div>
       </div>
     </div>
@@ -117,25 +241,52 @@
   <section id="about" class="bg-light" aria-labelledby="aboutTitle">
     <div class="container">
       <h2 id="aboutTitle" class="section-title">About Hurricane Melissa</h2>
-      <p class="text-muted">[Short factual summary here: date of the storm, affected regions of Jamaica, immediate needs — replace with verified sources and links.]</p>
-
+      <p>Hurricane Melissa made landfall in Jamaica on October 28, 2025, as a catastrophic Category 5 storm, the most powerful in the island's history.</p>
+      <p>Devon Loves Jamaica is a grassroots digital campaign raising awareness and funds to support those in need.</p>
+      <p class="text-muted">Founded 2025 by the family descendants of Devon Jamaican-English Footballer <a href="https://jackleslie.co.uk/">Jack Leslie</a></p>
       <div class="row gy-3 mt-4">
         <div class="col-sm-6 col-md-4">
           <div class="info-card text-center">
             <h3 class="h5">Immediate Needs</h3>
-            <p class="small text-muted mb-0">Food, clean water, shelter, medical aid.</p>
-          </div>
-        </div>
+<ul class="small text-muted text-start mb-0">
+<li>Food</li>
+<li>Clean water</li>
+<li>Shelter</li>
+<li>Medical aid</li>
+<li>Infrastructure repair</li>
+<li>Donations</li>
+<li>Volunteers</li>
+</ul>
+</div>
+</div>
         <div class="col-sm-6 col-md-4">
           <div class="info-card text-center">
             <h3 class="h5">Affected Areas</h3>
-            <p class="small text-muted mb-0">[List major parishes or towns affected — update with sources]</p>
+            <ul class="small text-muted text-start mb-0">
+<li>Westmoreland (including New Hope)</li>
+<li>St. Elizabeth (including the Black River)</li>
+<li>St. James (including Montego Bay)</li>
+<li>Hanover</li>
+<li>Manchester</li>
+<li>Rural agricultural areas</li>
+<li>infrastructure across the island</li>
+</ul>
           </div>
         </div>
         <div class="col-sm-12 col-md-4">
-          <div class="info-card text-center">
+          <br class="info-card text-start">
             <h3 class="h5">How We Help</h3>
-            <p class="small text-muted mb-0">Partnering with verified NGOs and local community groups for direct aid.</p>
+            <p class="small text-muted mb-0">We are currently in direct contact with communities, families and friends in Jamaica.</p></br>
+            <p class="small text-muted mb-0">We are also seeking to partner up with verified NGOs and local community groups including:</p>
+            <br>
+            <ul class="small text-muted text-start mb-0">
+<li><a href="https://supportjamaica.gov.jm/">Jamaica Gov Hurricane Melissa Relief
+</a></li>
+<li>Trusts</li>
+<li>Churches</li>
+<li>Schools</li>
+<li>Community centres</li>
+</ul>
           </div>
         </div>
       </div>
@@ -152,9 +303,9 @@
         <div class="col-md-4">
           <div class="card h-100">
             <div class="card-body d-flex flex-column">
-              <h3 class="card-title h5">JustGiving</h3>
-              <p class="card-text small text-muted">Create a campaign and link it here. Donors receive receipts via JustGiving.</p>
-              <a class="mt-auto btn btn-outline-primary" href="https://www.justgiving.com/" target="_blank" rel="noopener">Open JustGiving</a>
+              <h3 class="card-title h5">Fundraising</h3>
+              <p class="card-text small text-muted">Campaign link coming soon. Donors receive receipts via JustGiving.</p>
+              <a class="mt-auto btn" href="https://www.justgiving.com/" target="_blank" rel="noopener">Open JustGiving</a>
             </div>
           </div>
         </div>
@@ -162,9 +313,9 @@
         <div class="col-md-4">
           <div class="card h-100">
             <div class="card-body d-flex flex-column">
-              <h3 class="card-title h5">GoFundMe</h3>
-              <p class="card-text small text-muted">Quick crowdfunding with large reach. Link your campaign here.</p>
-              <a class="mt-auto btn btn-outline-primary" href="https://www.gofundme.com/" target="_blank" rel="noopener">Open GoFundMe</a>
+              <h3 class="card-title h5">Get involved</h3>
+              <p class="card-text small text-muted">We're reaching out for those who want to help.</p>
+              <a class="mt-auto btn" href="#contact" target="_blank" rel="noopener">Contact us</a>
             </div>
           </div>
         </div>
@@ -172,17 +323,17 @@
         <div class="col-md-4">
           <div class="card h-100">
             <div class="card-body d-flex flex-column">
-              <h3 class="card-title h5">Ko-fi</h3>
-              <p class="card-text small text-muted">Simple donations or small recurring support for community projects.</p>
-              <a class="mt-auto btn btn-outline-primary" href="https://ko-fi.com/" target="_blank" rel="noopener">Open Ko-fi</a>
+              <h3 class="card-title h5">Music and culture events</h3>
+              <p class="card-text small text-muted">We're looking to collaborate with local musicians and artists.</p>
+              <a class="mt-auto btn" href="#contact" target="_blank" rel="noopener">Get in touch</a>
             </div>
           </div>
         </div>
       </div>
-
+<!-- 
       <div class="mt-4">
-        <p class="small text-muted">If you want to accept card payments on-site, consider Stripe Checkout (test mode first) or embedded Eventbrite ticket donations.</p>
-      </div>
+        <p class="small text-muted">Sample text for the fundraising section.</p>
+      </div> -->
     </div>
   </section>
 
@@ -196,11 +347,12 @@
         <div class="col">
           <article class="card h-100">
             <div class="card-body">
-              <h3 class="card-title h5">TBC — Community Warm-Up Night</h3>
-              <p class="card-text small text-muted mb-2">Live music, Jamaican-inspired food stalls, family-friendly.</p>
-              <p class="mb-0"><strong>Venue:</strong> TBD • <strong>Date:</strong> TBD</p>
+              <h3 class="card-title h5">TBC — Community Warm-Up Night in Exeter</h3>
+              <p class="card-text small text-muted mb-2">Live music, Jamaican food, cultural engagement and open to all.</p>
+             
+             <p class="mb-0"><strong>Venue:</strong> TBD • <strong>Date:</strong> TBD</p>
               <div class="mt-3">
-                <a class="btn btn-sm btn-cta" href="#support">Volunteer / Host</a>
+                <p class=""><strong>Are you a musician or DJ? </strong></p><a class="btn btn-sm" href="mailto:devonlovesjamaica@gmail.com">Let us know!</a>
               </div>
             </div>
           </article>
@@ -209,11 +361,13 @@
         <div class="col">
           <article class="card h-100">
             <div class="card-body">
-              <h3 class="card-title h5">TBC — Fundraising Concert</h3>
-              <p class="card-text small text-muted mb-2">Headline acts, community DJs, cultural showcase.</p>
+              <h3 class="card-title h5">TBC — Fundraising music event</h3>
+              <p class="card-text small text-muted mb-2">Jamaican/UK inspired sounds, community DJs, cultural showcase, carribean food.</p>
               <p class="mb-0"><strong>Tickets:</strong> Via Eventbrite (link when live)</p>
               <div class="mt-3">
-                <a class="btn btn-sm btn-outline-primary" href="https://www.eventbrite.co.uk/" target="_blank" rel="noopener">Create Event</a>
+                                <p class=""><strong>Are you a venue manager or event organizer? </strong></p>
+
+                <a class="btn btn-sm" href="https://www.eventbrite.co.uk/" target="_blank" rel="noopener">Contact us</a>
               </div>
             </div>
           </article>
@@ -239,7 +393,7 @@
               <li>Gold — prime logo & stage mention</li>
             </ul>
             <div class="mt-3">
-              <a class="btn btn-sm btn-outline-primary" href="#contact">Request Sponsor Pack</a>
+              <a class="btn btn-sm" href="#contact">Request Sponsor Pack</a>
             </div>
           </div>
         </div>
@@ -249,7 +403,7 @@
             <h3 class="h6">Volunteer / Venue Host</h3>
             <p class="small text-muted">We need volunteers for hospitality, stewarding, merchandise, and set-up. Venues: we will provide a host pack including risk guidance.</p>
             <div class="mt-3">
-              <a class="btn btn-sm btn-cta" href="#contact">Register Interest</a>
+              <a class="btn btn-sm" href="#contact">Register Interest</a>
             </div>
           </div>
         </div>
@@ -276,6 +430,7 @@
             <label class="form-label" for="role">I am a</label>
             <select id="role" name="role" class="form-select" required>
               <option value="">Choose...</option>
+                            <option>Musician/DJ</option>
               <option>Volunteer</option>
               <option>Venue</option>
               <option>Sponsor</option>
@@ -296,7 +451,7 @@
           </div>
 
           <div class="col-12">
-            <button type="submit" class="btn btn-cta">Send Registration</button>
+            <button type="submit" class="btn">Send Registration</button>
             <small class="d-block mt-2 text-muted">No personal data will be sold. Data retained only for coordination and then archived.</small>
           </div>
         </form>
@@ -305,42 +460,53 @@
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="bg-light" aria-labelledby="contactTitle">
+  <section id="contact" class="section-jamaica" aria-labelledby="contactTitle">
     <div class="container">
       <h2 id="contactTitle" class="section-title">Contact</h2>
       <div class="row g-3">
         <div class="col-md-6">
           <div class="info-card">
             <h3 class="h6">General enquiries</h3>
-            <p class="small text-muted mb-1"><strong>Email:</strong> <a href="mailto:contact@devonlovesjamaica.org">contact@devonlovesjamaica.org</a></p>
-            <p class="small text-muted mb-0"><strong>Press:</strong> press@devonlovesjamaica.org</p>
+            <p class="small text-muted mb-1"><strong>Email:</strong> <a href="mailto:devonlovesjamaica@gmail.com">devonlovesjamaica@gmail.com</a></p>
+            <p class="small text-muted mb-0"><strong>Press: </strong><a href="mailto:devonlovesjamaica+pressandvenues@gmail.com">Enquiries</a></p>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="info-card">
             <h3 class="h6">Partners & transparency</h3>
-            <p class="small text-muted">All funds will be listed on the distribution page. We will publish receipts and partner confirmations after transfer.</p>
-            <a class="btn btn-sm btn-outline-primary mt-2" href="#fundraise">Where funds go →</a>
+            <p class="small text-muted">All funds will be listed on the distribution page.<br> We will publish receipts and partner confirmations after transfer.</p>
+            <a class="btn btn-sm mt-2" href="#fundraise">Where funds go →</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer role="contentinfo">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-8 text-md-start mb-3 mb-md-0">
-          <small>© <span id="year"></span> Devon Loves Jamaica — Community fundraiser. Transparency & accessibility first.</small>
-        </div>
-        <div class="col-md-4 text-md-end">
-          <small>Open-source on <a href="https://github.com/your-username/devon-loves-jamaica" target="_blank" rel="noopener" style="color:var(--gold)">GitHub</a></small>
-        </div>
+<!-- Footer -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-8 text-md-start mb-3 mb-md-0">
+        <small>© <span id="year"></span> Devon Loves Jamaica — Supporting communities affected by Hurricane Melissa.
+</small>
+      </div>
+      <div class="col-md-4 text-md-end d-flex justify-content-md-end gap-2">
+        <!-- Social icons -->
+        <a href="https://facebook.com/" target="_blank" rel="noopener" class="btn btn-cta-icon" aria-label="Facebook">
+          <i class="bi bi-facebook"></i>
+        </a>
+        <a href="https://instagram.com/" target="_blank" rel="noopener" class="btn btn-cta-icon" aria-label="Instagram">
+          <i class="bi bi-instagram"></i>
+        </a>
+        <!-- Optional GitHub link -->
+        <a href="https://github.com/GEOAC/devon-loves-jamaica" target="_blank" rel="noopener" class="btn btn-cta-icon" aria-label="GitHub">
+          <i class="bi bi-github"></i>
+        </a>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
 
   <!-- Bootstrap JS (bundle includes Popper) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -348,12 +514,6 @@
   <script>
     // Small helpers
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Enable scrollspy refresh on load (if content height changes)
-    const scrollSpy = bootstrap.ScrollSpy.getInstance(document.body) || new bootstrap.ScrollSpy(document.body, {
-      target: '#mainNav',
-      offset: 80
-    });
   </script>
 </body>
 </html>
